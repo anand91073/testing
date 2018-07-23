@@ -28,8 +28,8 @@ node {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
-     withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUser')]) {
-          sh "docker login -u ${env.dockerhubUser} -p ${env.dockerhubPassword}"
+     withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'dockerPassword', usernameVariable: 'dockerUser')]) {
+          sh "docker login -u ${env.dockerUser} -p ${env.dockerPassword}"
          app.push("${env.BUILD_NUMBER}")
         }         
     }
